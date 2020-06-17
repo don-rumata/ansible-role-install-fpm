@@ -40,15 +40,25 @@ None.
 
 ## Role Variables
 
-None.
+```yaml
+# "User install" is default, because https://ru.stackoverflow.com/a/907613/191416
+# fpm_method_install: system
+fpm_method_install: user
+
+# fpm_docs_install: no
+fpm_docs_install: yes
+
+# By default, the latest version from https://rubygems.org/gems/fpm is installed.
+# fpm_version: x.y.z
+```
 
 ## Dependencies
 
 None.
 
-## Example Playbook
+## Example Playbooks
 
-Install `latest` FPM on Linux:
+Install `latest` FPM with help files in `~/.gem` on Linux:
 
 `install-fpm.yml`:
 
@@ -63,7 +73,7 @@ Install `latest` FPM on Linux:
   tasks:
 ```
 
-Install FPM `v1.10.0` on Linux:
+Install FPM `v1.10.0` **without** help files on Linux:
 
 `install-fpm.yml`:
 
@@ -77,6 +87,7 @@ Install FPM `v1.10.0` on Linux:
     - ansible-role-install-fpm
   vars:
     fpm_version: 1.10.0
+    fpm_docs_install: no
   tasks:
 ```
 
@@ -93,6 +104,7 @@ Apache License, Version 2.0
 - ~~Add tests.~~
 - Add more tests.
 - Add ArchLinux support.
+- Add CentOS 7 support.
 
 [license-image]: https://img.shields.io/github/license/don-rumata/ansible-role-install-fpm.svg
 [license-url]: https://opensource.org/licenses/Apache-2.0
