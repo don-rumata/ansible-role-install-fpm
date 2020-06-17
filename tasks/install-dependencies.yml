@@ -68,7 +68,14 @@
     - fpm_method_install == 'user'
     - ansible_virtualization_type == 'docker'
   become: yes
-  lineinfile:
-      path: /etc/gemrc
-      line: 'gem: --user-install'
-      state: present
+  block:
+    - file:
+        path: /etc/gemrc
+        state: touch
+    - lineinfile:
+          path: /etc/gemrc
+          line: "{{ item }}"
+          state: present
+      with_items:
+        - 'https://stackoverflow.com/a/48212945/5430535'
+        - 'gem: --user-install'
