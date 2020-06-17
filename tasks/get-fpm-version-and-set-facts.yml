@@ -1,0 +1,12 @@
+---
+- name: Get releases info from API
+  uri:
+    url: "{{ rubygems_api_releases_url }}"
+    method: GET
+    return_content: yes
+  delegate_to: localhost
+  register: fpm_releases
+
+- name: Set fact about fpm version
+  set_fact:
+    fpm_version_fact: "{{ fpm_version | default(fpm_releases.json.version) }}"

@@ -1,0 +1,61 @@
+---
+# https://fpm.readthedocs.io/en/latest/installing.html
+
+- name: Install Ruby 4 Debian and Ubuntu
+  when: ansible_distribution in ['Debian', 'Ubuntu']
+  become: yes
+  apt:
+    name:
+      - ruby
+      - ruby-dev
+      - rubygems
+      - build-essential
+    state: present
+    install_recommends: yes
+
+- name: Install Ruby 4 CentOS\RHEL
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'yum'
+  vars:
+    ansible_python_interpreter: /usr/bin/python2.7
+  become: yes
+  yum:
+    name:
+      # - ruby
+      - ruby-devel
+      - gcc
+      - make
+      - rpm-build
+      # - libffi
+      # - libffi-devel
+      - rubygems
+      - rubygems-devel
+
+- name: Install Ruby 4 Fedora
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'dnf'
+  become: yes
+  dnf:
+    name:
+      - ruby-devel
+      - gcc
+      - make
+      - rpm-build
+      - libffi-devel
+
+- name: Install Ruby 4 OpenSUSE
+  when:
+    - ansible_system == 'Linux'
+    - ansible_os_family == 'Suse'
+    - ansible_pkg_mgr == 'zypper'
+  become: yes
+  zypper:
+    name:
+      - ruby
+      - ruby-devel
+      - gcc
+      - make
+      - libffi-devel
+    state: present

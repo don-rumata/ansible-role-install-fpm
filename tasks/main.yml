@@ -1,0 +1,32 @@
+---
+- import_tasks: update-cache.yml
+
+- import_tasks: install-dependencies.yml
+
+- import_tasks: get-fpm-version-and-set-facts.yml
+
+- name: Install FPM in userspace 4 Linux
+  when:
+    - ansible_system == 'Linux'
+    - fpm_method_install == 'user'
+  # environment:
+  #   PATH: "{{ ruby_path_usermode.stdout }}:{{ ansible_env.PATH }}"
+    # PATH: "`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
+  gem:
+    name: fpm
+    state: present
+    include_doc: "{{ fpm_docs_install }}"
+    version: "{{ fpm_version_fact }}"
+    user_install: yes
+
+- name: Install FPM in system 4 Linux
+  when:
+    - ansible_system == 'Linux'
+    - fpm_method_install == 'system'
+  become: yes
+  gem:
+    name: fpm
+    state: present
+    include_doc: "{{ fpm_docs_install }}"
+    version: "{{ fpm_version_fact }}"
+    user_install: no

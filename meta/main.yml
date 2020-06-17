@@ -1,0 +1,49 @@
+---
+galaxy_info:
+  author: don Rumata
+  description: Install FPM for Linux
+  company: localhost
+
+  license: Apache License, Version 2.0
+
+  min_ansible_version: 2.6
+
+  platforms:
+    - name: Fedora
+      versions:
+        - 31
+        - 32
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
+        - xenial
+    - name: Debian
+      version:
+        - oldstable
+        - stable
+    # https://github.com/ansible/galaxy/issues/2072
+    - name: EL
+      versions:
+        # - 7
+        - 8
+    - name: opensuse
+      vesrion:
+        - tumbleweed
+        - 15.1
+    # - name: ArchLinux
+    #   version:
+    #     - any
+
+  galaxy_tags:
+    - linux
+    - fpm
+    - ruby
+    - ubuntu
+    - debian
+    - fedora
+    - centos
+    - opensuse
+    # - archlinux
+
+  dependencies: []

@@ -1,0 +1,18 @@
+---
+gem_package_name: fpm
+
+# fpm_method_install: system
+fpm_method_install: user
+
+# fpm_docs_install: no
+fpm_docs_install: yes
+
+# https://rubygems.org/gems/fpm
+# fpm_version: latest
+
+# https://guides.rubygems.org/rubygems-org-api/
+rubygems_api_releases_version: 1
+
+rubygems_api_releases_format: json
+
+rubygems_api_releases_url: https://rubygems.org/api/v{{ rubygems_api_releases_version }}/gems/{{ gem_package_name }}.{{ rubygems_api_releases_format }}
