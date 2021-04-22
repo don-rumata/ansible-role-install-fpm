@@ -13,26 +13,7 @@
     state: present
     install_recommends: yes
 
-- name: Install Ruby 4 CentOS\RHEL
-  when:
-    - ansible_os_family == 'RedHat'
-    - ansible_pkg_mgr == 'yum'
-  vars:
-    ansible_python_interpreter: /usr/bin/python2.7
-  become: yes
-  yum:
-    name:
-      # - ruby
-      - ruby-devel
-      - gcc
-      - make
-      - rpm-build
-      # - libffi
-      # - libffi-devel
-      - rubygems
-      - rubygems-devel
-
-- name: Install Ruby 4 Fedora
+- name: Install Ruby 4 Fedora\CentOS 8
   when:
     - ansible_os_family == 'RedHat'
     - ansible_pkg_mgr == 'dnf'

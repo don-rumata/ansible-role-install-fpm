@@ -1,6 +1,6 @@
 # Ansible Role: Install FPM - packaging made simple
 
-[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url] [![CircleCI][circleci-image]][circleci-url]
+[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url] [![CircleCI][circleci-image]][circleci-url] [![Ansible Galaxy Quality][ansible-galaxy-quality-image]][ansible-galaxy-url]
 
 Install [FPM](https://fpm.readthedocs.io/en/latest/) for Linux.
 
@@ -10,25 +10,23 @@ Install [FPM](https://fpm.readthedocs.io/en/latest/) for Linux.
   platforms:
     - name: Fedora
       versions:
-        - 31
-        - 32
+        - 33
     - name: Ubuntu
       versions:
-        - trusty
         - xenial
         - bionic
+        - focal
     - name: Debian
       version:
         - oldstable
         - stable
     - name: EL (CentOS)
       versions:
-        # - 7
         - 8
     - name: opensuse
       vesrion:
         - tumbleweed
-        - 15.1
+        - 15.2
     # - name: ArchLinux
     #   version:
     #     - any
@@ -104,7 +102,6 @@ Apache License, Version 2.0
 - ~~Add tests.~~
 - Add more tests.
 - Add ArchLinux support.
-- Add CentOS 7 support.
 
 [license-image]: https://img.shields.io/github/license/don-rumata/ansible-role-install-fpm.svg
 [license-url]: https://opensource.org/licenses/Apache-2.0
@@ -114,3 +111,5 @@ Apache License, Version 2.0
 
 [circleci-image]: https://circleci.com/gh/don-rumata/ansible-role-install-fpm.svg?style=shield
 [circleci-url]: https://circleci.com/gh/don-rumata/ansible-role-install-fpm
+
+[ansible-galaxy-quality-image]: https://img.shields.io/ansible/quality/49352

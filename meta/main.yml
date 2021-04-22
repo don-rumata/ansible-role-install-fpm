@@ -6,11 +6,12 @@ galaxy_info:
 
   license: Apache License, Version 2.0
 
+  min_ansible_version: 2.8
+
   platforms:
     - name: Fedora
       versions:
-        - 31
-        - 32
+        - 33
     - name: Ubuntu
       versions:
         - focal
@@ -23,12 +24,11 @@ galaxy_info:
     # https://github.com/ansible/galaxy/issues/2072
     - name: EL
       versions:
-        # - 7
         - 8
     - name: opensuse
       vesrion:
         - tumbleweed
-        - 15.1
+        - 15.2
     # - name: ArchLinux
     #   version:
     #     - any
@@ -36,6 +36,10 @@ galaxy_info:
   galaxy_tags:
     - linux
     - fpm
+    - deb
+    - rpm
+    - build
+    - package
     - ruby
     - ubuntu
     - debian
