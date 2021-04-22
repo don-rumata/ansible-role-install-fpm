@@ -41,19 +41,12 @@ parameters:
 
 executors:
 
-  executor-fedora-31:
+  executor-fedora-33:
     resource_class: << pipeline.parameters.parameter-resource-class >>
     working_directory: << pipeline.parameters.parameter-working-directory >>
     docker:
-      # - image: geerlingguy/docker-fedora-31-ansible:latest
-      - image: diodonfrost/fedora-31-ansible
-
-  executor-fedora-32:
-    resource_class: << pipeline.parameters.parameter-resource-class >>
-    working_directory: << pipeline.parameters.parameter-working-directory >>
-    docker:
-      # - image: geerlingguy/docker-fedora-32-ansible:latest
-      - image: diodonfrost/fedora-32-ansible
+      # - image: geerlingguy/docker-fedora-33-ansible:latest
+      - image: diodonfrost/fedora-33-ansible
 
   executor-ubuntu-16-04:
     resource_class: << pipeline.parameters.parameter-resource-class >>
@@ -110,14 +103,8 @@ executors:
 
 jobs:
 
-  job-run-ansible-in-fedora-31:
-    executor: executor-fedora-31
-    steps:
-      - checkout
-      - command-run-ansible-test
-
-  job-run-ansible-in-fedora-32:
-    executor: executor-fedora-32
+  job-run-ansible-in-fedora-33:
+    executor: executor-fedora-33
     steps:
       - checkout
       - command-run-ansible-test
@@ -180,8 +167,7 @@ workflows:
 
   workflow-run-tests:
     jobs:
-      - job-run-ansible-in-fedora-31
-      - job-run-ansible-in-fedora-32
+      - job-run-ansible-in-fedora-33
       - job-run-ansible-in-ubuntu-16-04
       - job-run-ansible-in-ubuntu-18-04
       - job-run-ansible-in-ubuntu-20-04
